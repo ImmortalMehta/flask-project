@@ -1,7 +1,14 @@
 {
-  "api_version": "1.0",
-  "message": "Welcome to the Flask MongoDB API",
+  "api_version": "2.0",
+  "message": "Welcome to the Enhanced Flask MongoDB API",
+  "status": "active",
+  "environment": "production",
   "endpoints": {
+    "form": {
+      "method": "GET",
+      "path": "/",
+      "description": "Get the main form"
+    },
     "submit": {
       "method": "POST",
       "path": "/submit",
@@ -11,6 +18,16 @@
       "method": "GET",
       "path": "/success",
       "description": "Success page"
+    },
+    "api": {
+      "method": "GET",
+      "path": "/api",
+      "description": "Get API information"
+    },
+    "submittodoitem": {
+      "method": "POST",
+      "path": "/submittodoitem",
+      "description": "Submit a to-do item"
     }
   }
 }
