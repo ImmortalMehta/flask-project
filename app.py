@@ -62,5 +62,9 @@ def submit_todo_item():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/todo')
+def todo_form():
+    return render_template('todo.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
