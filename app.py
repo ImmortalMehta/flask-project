@@ -41,5 +41,26 @@ def api():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/submittodoitem', methods=['POST'])
+def submit_todo_item():
+    try:
+        item_name = request.form.get('itemName')
+        item_description = request.form.get('itemDescription')
+
+        if not item_name or not item_description:
+            return render_template('todo.html', error="All fields are required"), 400
+
+        # Insert into MongoDB
+        todo_collection = db["todos"]
+        todo_collection.insert_one({
+            "itemName": item_name,
+            "itemDescription": item_description
+        })
+
+        return jsonify({"success": True, "message": "To-Do item added successfully"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True)
