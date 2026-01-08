@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from pymongo import MongoClient
+import json
 
 app = Flask(__name__)
 
@@ -30,6 +31,15 @@ def submit():
 @app.route('/success')
 def success():
     return render_template('out.html')
+
+@app.route('/api')
+def api():
+    try:
+        with open('api_data.json', 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

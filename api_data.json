@@ -1,0 +1,16 @@
+{
+  "api_version": "1.0",
+  "message": "Welcome to the Flask MongoDB API",
+  "endpoints": {
+    "submit": {
+      "method": "POST",
+      "path": "/submit",
+      "description": "Submit user data"
+    },
+    "success": {
+      "method": "GET",
+      "path": "/success",
+      "description": "Success page"
+    }
+  }
+}
